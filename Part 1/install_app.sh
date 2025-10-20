@@ -11,8 +11,6 @@
 # - Idempotent (skips if already installed; --force to overwrite)
 # - Dry-run mode for safe previews
 # - Simple registry to add more apps (bonus)
-# - Detects CPU architecture (Intel / Apple Silicon) and installs correct Slack version
-# - Skips download if latest version already installed (pre-check via resolved URL)
 #
 # Usage:
 #   sudo ./install_app.sh                # install Slack
@@ -364,4 +362,62 @@ install_pkg() {
 # -----------------------------
 verify_install() {
   local bundle="${APP_BUNDLES[$APP]}"
-  if [[ -d "/Applications/${bundle}" ]];
+  if [[ -d "/Applications/${bundle}" ]]; then
+    local ver
+    ver="$(version_of)"
+    if [[ -n "$ver" ]]; then
+      log "Verified: ${bundle} installed. Version: $ver"
+    else
+      log "Verified: ${bundle} installed."
+    fi
+    return 0
+  else
+    log "Verification failed: /Applications/${bundle} not found."
+    return 1
+  fi
+}
+
+# -----------------------------
+# Main
+# -----------------------------
+main() {
+  parse_args "$@"
+  ensure_logging_writable
+  log "=== Starting installer (app=$APP, dry_run=$DRY_RUN, force=$FORCE) ==="
+
+  require_macos
+  require_root
+  require_internet
+
+  # NEW: pre-check installed vs remote version to avoid unnecessary download/mount
+  if precheck_versions; then
+    : # proceed
+  else
+    : # not used; kept for structure readability
+  fi
+  pre_status=$?
+  if [[ $pre_status -eq 2 ]]; then
+    # Up to date; in dry-run just state we'd skip; in real run, exit cleanly.
+    log "Up-to-date detected before download. Exiting."
+    exit 0
+  fi
+
+  # Attempt DMG flow; if registry uses PKG, fall back to PKG flow.
+  if download_dmg; then
+    mount_dmg || { cleanup; fail "Failed to mount DMG."; }
+    copy_app_from_dmg || { unmount_dmg; cleanup; fail "Failed to copy app from DMG."; }
+    unmount_dmg
+  else
+    install_pkg || { cleanup; fail "PKG installation failed."; }
+  fi
+
+  cleanup
+
+  if ! verify_install; then
+    fail "Installation verification failed."
+  fi
+
+  log "=== Installation completed successfully ==="
+}
+
+main "$@"

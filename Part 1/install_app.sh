@@ -3,25 +3,28 @@
 # install_app.sh — Idempotent macOS app installer (Slack by default)
 #
 # Features:
-# - Verifies macOS, admin rights, internet connectivity
-# - Downloads latest app DMG (Slack by default) with redirects
-# - Mounts DMG, copies .app to /Applications using 'ditto'
-# - Cleans up DMG + unmounts volume
+# - Verifies macOS, admin rights, internet connectivity (to the actual vendor host)
+# - Auto-detects CPU arch (Intel / Apple Silicon) and selects correct Slack DMG
+# - Resolves remote version (from final redirected URL) to skip download if up to date
+# - Downloads app DMG, mounts, copies .app to /Applications using 'ditto'
+# - Cleans up DMG + unmounts volume (and also via trap on any error/exit)
 # - Logs every step to file + console
 # - Idempotent (skips if already installed; --force to overwrite)
 # - Dry-run mode for safe previews
-# - Simple registry to add more apps (bonus)
+# - Simple registry to add more apps (bonus path for PKG-based apps)
+#
+# Requires Bash 4+ (associative arrays). On macOS, run with Homebrew Bash if needed:
+#   sudo /opt/homebrew/bin/bash ./install_app.sh
 #
 # Usage:
 #   sudo ./install_app.sh                # install Slack
 #   sudo ./install_app.sh --dry-run      # simulate actions
 #   sudo ./install_app.sh --force        # overwrite existing install
 #   sudo ./install_app.sh --app slack    # explicitly Slack
-#   sudo ./install_app.sh --app zoom     # example extra app (see APP_REGISTRY)
+#   sudo ./install_app.sh --app zoom     # example extra app (PKG)
 #
 # Exit codes:
 #   0 success | 1 general error | 2 prereq fail | 3 download fail | 4 mount fail | 5 copy fail
-#
 
 set -euo pipefail
 
@@ -41,7 +44,7 @@ declare -A APP_BUNDLES=(
 LOG_DIR="/var/log"
 LOG_FILE="${LOG_DIR}/workplace_installer.log"
 
-TMP_DIR="$(mktemp -d /tmp/app-install.XXXXXX)"
+TMP_DIR="$(/usr/bin/mktemp -d /tmp/app-install.XXXXXX)"
 DMG_PATH="${TMP_DIR}/download.dmg"
 MOUNT_POINT="${TMP_DIR}/mnt"
 
@@ -50,11 +53,28 @@ DRY_RUN=false
 FORCE=false
 
 # -----------------------------
+# Cleanup trap (always runs)
+# -----------------------------
+cleanup_all() {
+  # Best-effort unmount if mounted
+  if /sbin/mount | /usr/bin/grep -q "on ${MOUNT_POINT} "; then
+    echo "[trap] Unmounting ${MOUNT_POINT}"
+    /usr/bin/hdiutil detach "$MOUNT_POINT" -quiet || true
+  fi
+  # Remove temp dir
+  if [[ -n "${TMP_DIR:-}" && -d "$TMP_DIR" ]]; then
+    echo "[trap] Removing temp dir ${TMP_DIR}"
+    /bin/rm -rf "$TMP_DIR" || true
+  fi
+}
+trap cleanup_all EXIT
+
+# -----------------------------
 # Helpers
 # -----------------------------
 log() {
   local ts
-  ts="$(date '+%Y-%m-%d %H:%M:%S')"
+  ts="$(/bin/date '+%Y-%m-%d %H:%M:%S')"
   echo "[$ts] $*" | tee -a "$LOG_FILE"
 }
 
@@ -72,27 +92,37 @@ fail() {
 }
 
 require_macos() {
-  if [[ "$(uname -s)" != "Darwin" ]]; then
-    fail "This script only supports macOS. (Detected: $(uname -s))"
+  if [[ "$(/usr/bin/uname -s)" != "Darwin" ]]; then
+    fail "This script only supports macOS. (Detected: $(/usr/bin/uname -s))"
   fi
 }
 
 require_root() {
-  if [[ "$(id -u)" -ne 0 ]]; then
+  if [[ "$(/usr/bin/id -u)" -ne 0 ]]; then
     fail "Please run as root (sudo). Administrative privileges are required."
   fi
 }
 
-require_internet() {
-  if ! curl -I --silent --fail --max-time 10 https://slack.com >/dev/null 2>&1; then
-    fail "No internet connectivity or slack.com unreachable."
-  fi
+detect_arch() {
+  case "$(/usr/bin/uname -m)" in
+    arm64)  echo "arm64" ;;
+    x86_64) echo "intel" ;;
+    *)      echo "unknown" ;;
+  esac
+}
+
+slack_url_for_arch() {
+  case "$(detect_arch)" in
+    arm64)  echo "https://slack.com/ssb/download-osx?variant=arm64" ;;
+    intel)  echo "https://slack.com/ssb/download-osx?variant=intel" ;;
+    *)      echo "https://slack.com/ssb/download-osx?variant=universal" ;;
+  esac
 }
 
 ensure_logging_writable() {
-  if ! touch "$LOG_FILE" >/dev/null 2>&1; then
+  if ! /usr/bin/touch "$LOG_FILE" >/dev/null 2>&1; then
     LOG_FILE="/tmp/workplace_installer.log"
-    touch "$LOG_FILE" || fail "Cannot write to log file."
+    /usr/bin/touch "$LOG_FILE" || fail "Cannot write to log file."
   fi
 }
 
@@ -115,7 +145,7 @@ EOF
 parse_args() {
   while [[ $# -gt 0 ]]; do
     case "$1" in
-      --app)   APP="${2:-}"; shift 2 || true ;;
+      --app)     APP="${2:-}"; shift 2 || true ;;
       --dry-run) DRY_RUN=true; shift ;;
       --force)   FORCE=true; shift ;;
       -h|--help) usage; exit 0 ;;
@@ -138,48 +168,42 @@ version_of() {
 }
 
 # -----------------------------
-# Arch-aware Slack URL
+# Connectivity (actual host)
 # -----------------------------
-detect_arch() {
-  case "$(uname -m)" in
-    arm64)  echo "arm64" ;;
-    x86_64) echo "intel" ;;
-    *)      echo "unknown" ;;
-  esac
+require_internet() {
+  local base host
+  if [[ "$APP" == "slack" ]]; then
+    base="$(slack_url_for_arch)"
+  else
+    base="${APP_URLS[$APP]}"
+  fi
+  host="$(echo "$base" | /usr/bin/awk -F/ '{print $3}')"
+  if ! /usr/bin/curl -I --silent --fail --max-time 10 "https://${host}" >/dev/null 2>&1; then
+    fail "Internet check failed or host unreachable: ${host}"
+  fi
 }
 
-slack_url_for_arch() {
-  case "$(detect_arch)" in
-    arm64)  echo "https://slack.com/ssb/download-osx?variant=arm64" ;;
-    intel)  echo "https://slack.com/ssb/download-osx?variant=intel" ;;
-    *)      echo "https://slack.com/ssb/download-osx?variant=universal" ;;
-  esac
-}
-
+# -----------------------------
+# Version resolution (no download)
+# -----------------------------
 resolve_download_url() {
-  # Resolve the *final* redirected URL without downloading the file.
   local base
   if [[ "$APP" == "slack" ]]; then
     base="$(slack_url_for_arch)"
   else
     base="${APP_URLS[$APP]}"
   fi
-  # Print the final effective URL (after redirects)
-  curl -sSL -o /dev/null -w '%{url_effective}' "$base"
+  /usr/bin/curl -sSL -o /dev/null -w '%{url_effective}' "$base"
 }
 
 remote_version() {
-  # Try to parse a version from the final DMG/PKG filename in the resolved URL.
-  local final url file ver
+  local url file ver=""
   url="$(resolve_download_url)"
-  file="$(basename "$url")"
+  file="$(/usr/bin/basename "$url" 2>/dev/null || echo "")"
 
-  if [[ "$APP" == "slack" ]]; then
-    # Common patterns: Slack-4.39.95-macOS.dmg OR Slack-4.39.95-macOS-arm64.dmg
-    ver="$(echo "$file" | sed -E 's/.*Slack-([0-9]+(\.[0-9]+)+).*/\1/' )"
-  else
-    # Fallback: many vendor URLs may not include version. Return empty.
-    ver=""
+  if [[ "$APP" == "slack" && -n "$file" ]]; then
+    # Examples: Slack-4.39.95-macOS.dmg or Slack-4.39.95-macOS-arm64.dmg
+    ver="$(echo "$file" | /usr/bin/sed -E 's/.*Slack-([0-9]+(\.[0-9]+)+).*/\1/')" || true
   fi
 
   echo "$ver"
@@ -187,10 +211,8 @@ remote_version() {
 
 compare_versions() {
   # Returns 0 if v1 == v2, 1 if v1 > v2, 2 if v1 < v2
-  # Split by dots and compare numerically.
   local IFS=.
   local i v1=($1) v2=($2)
-  # Pad lengths
   local len=$(( ${#v1[@]} > ${#v2[@]} ? ${#v1[@]} : ${#v2[@]} ))
   for ((i=${#v1[@]}; i<len; i++)); do v1[i]=0; done
   for ((i=${#v2[@]}; i<len; i++)); do v2[i]=0; done
@@ -218,7 +240,6 @@ precheck_versions() {
     log "Latest available version: (unknown; vendor did not expose version in URL)"
   fi
 
-  # Decide:
   if ! is_installed; then
     log "Not installed — proceed with installation."
     return 0
@@ -232,28 +253,28 @@ precheck_versions() {
   if [[ -n "$installed" ]]; then
     compare_versions "$installed" "$remote"
     case $? in
-      0)  # equal
-          if ! $FORCE; then
-            log "Slack is already at the latest version. Nothing to do."
-            return 2
-          else
-            log "Slack is latest but --force specified — proceeding."
-            return 0
-          fi
-          ;;
-      1)  # installed > remote (rare)
-          if ! $FORCE; then
-            log "Installed version ($installed) is newer than remote ($remote). Skipping."
-            return 2
-          else
-            log "Installed > remote but --force specified — proceeding."
-            return 0
-          fi
-          ;;
-      2)  # installed < remote
-          log "An update is available ($installed → $remote). Proceeding."
+      0)
+        if ! $FORCE; then
+          log "Slack is already at the latest version. Nothing to do."
+          return 2
+        else
+          log "Slack is latest but --force specified — proceeding."
           return 0
-          ;;
+        fi
+        ;;
+      1)
+        if ! $FORCE; then
+          log "Installed version ($installed) is newer than remote ($remote). Skipping."
+          return 2
+        else
+          log "Installed > remote but --force specified — proceeding."
+          return 0
+        fi
+        ;;
+      2)
+        log "An update is available ($installed → $remote). Proceeding."
+        return 0
+        ;;
     esac
   fi
 
@@ -277,7 +298,7 @@ download_dmg() {
   fi
 
   log "Downloading latest '$APP' from: $url"
-  run "curl -L --fail --output '$DMG_PATH' '$url'" || { log "Download failed."; return 1; }
+  run "/usr/bin/curl -L --fail --silent --show-error --output '$DMG_PATH' '$url'" || { log "Download failed."; return 1; }
 
   if ! $DRY_RUN && [[ ! -s "$DMG_PATH" ]]; then
     log "Downloaded file is empty."
@@ -287,9 +308,9 @@ download_dmg() {
 }
 
 mount_dmg() {
-  mkdir -p "$MOUNT_POINT"
+  /bin/mkdir -p "$MOUNT_POINT"
   log "Mounting DMG at: $MOUNT_POINT"
-  run "hdiutil attach '$DMG_PATH' -nobrowse -quiet -mountpoint '$MOUNT_POINT'" || return 1
+  run "/usr/bin/hdiutil attach '$DMG_PATH' -nobrowse -quiet -mountpoint '$MOUNT_POINT'" || return 1
   return 0
 }
 
@@ -310,22 +331,22 @@ copy_app_from_dmg() {
 
   if is_installed && $FORCE; then
     log "Removing existing installation (force): $dst"
-    run "rm -rf '$dst'"
+    run "/bin/rm -rf '$dst'"
   fi
 
   log "Copying app to /Applications using 'ditto' (preserves metadata)"
-  run "ditto '$src' '$dst'" || return 1
+  run "/usr/bin/ditto '$src' '$dst'" || return 1
   return 0
 }
 
 unmount_dmg() {
   log "Unmounting DMG from: $MOUNT_POINT"
-  run "hdiutil detach '$MOUNT_POINT' -quiet" || log "Warning: failed to unmount (might already be detached)."
+  run "/usr/bin/hdiutil detach '$MOUNT_POINT' -quiet" || log "Warning: failed to unmount (might already be detached)."
 }
 
 cleanup() {
   log "Cleaning up temp dir: $TMP_DIR"
-  $DRY_RUN || rm -rf "$TMP_DIR"
+  $DRY_RUN || /bin/rm -rf "$TMP_DIR"
 }
 
 # -----------------------------
@@ -345,7 +366,7 @@ install_pkg() {
   fi
 
   log "Downloading PKG for '$APP' from: $url"
-  run "curl -L --fail --output '$pkg' '$url'" || { log "Download failed."; return 1; }
+  run "/usr/bin/curl -L --fail --silent --show-error --output '$pkg' '$url'" || { log "Download failed."; return 1; }
 
   if is_installed && ! $FORCE; then
     log "App already installed — skipping PKG install (use --force to reinstall)."
@@ -353,7 +374,7 @@ install_pkg() {
   fi
 
   log "Installing PKG (this may prompt macOS Installer logs)"
-  run "installer -pkg '$pkg' -target /" || return 1
+  run "/usr/sbin/installer -pkg '$pkg' -target /" || return 1
   return 0
 }
 
@@ -389,15 +410,10 @@ main() {
   require_root
   require_internet
 
-  # NEW: pre-check installed vs remote version to avoid unnecessary download/mount
-  if precheck_versions; then
-    : # proceed
-  else
-    : # not used; kept for structure readability
-  fi
+  # Pre-check installed vs remote version to avoid unnecessary download/mount
+  precheck_versions
   pre_status=$?
   if [[ $pre_status -eq 2 ]]; then
-    # Up to date; in dry-run just state we'd skip; in real run, exit cleanly.
     log "Up-to-date detected before download. Exiting."
     exit 0
   fi

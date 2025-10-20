@@ -14,6 +14,17 @@ install_app.sh
 Bash
 
 ### How to Run
+
+# If your macOS uses the old Bash version (3.x), install Homebrew and the latest Bash:
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install bash
+
+# Make the script executable (only needed once)
+chmod +x install_app.sh
+
+# The script automatically detects your Mac architecture (Intel or Apple Silicon)
+# and downloads the correct Slack version.
+
 # Dry run (no changes made)
 sudo ./install_app.sh --dry-run
 
@@ -43,11 +54,13 @@ sudo ./install_app.sh --app zoom
 
 - [x] Idempotent (safe to run multiple times)
 - [x] Dry-run mode
-- [x] Optional “app registry” system to support other apps  
+- [x] Optional “app registry” system to support other apps
+- [x] Detects CPU architecture (Intel / Apple Silicon) and installs correct Slack version
+
 
 ### Testing
 
-- Tested on macOS Sonoma with both dry-run and actual installation.
+- Tested on macOS Sequoia with both dry-run and actual installation.
 - Confirmed Slack successfully installs to /Applications.
 - Verified skip behavior when Slack is already installed (idempotent).
 - Verified clean failure if internet or admin rights are missing.
@@ -63,6 +76,7 @@ sudo ./install_app.sh --app zoom
 
 ### Known Limitations
 
+- Newer Bash version is installed.
 - Limited testing on macOS versions older than Monterey.
 - Doesn’t support proxy authentication or restricted corporate networks.
 - Doesn’t handle auto-updates after installation.

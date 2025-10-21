@@ -145,7 +145,7 @@ The script generates `asset_sync_output.json` with this structure:
 ### Example Transformations
 
 #### Example 1:
-
+```text
 python sync_transform_employees.py --results 2
 2025-10-21T10:10:06Z | INFO     | Fetching HR data: https://randomuser.me/api/?results=2&nat=us (attempt 1/2)
 2025-10-21T10:10:07Z | INFO     | Fetched 2 records from HR API.
@@ -154,6 +154,7 @@ python sync_transform_employees.py --results 2
 2025-10-21T10:10:07Z | INFO     | Requested: 2
 2025-10-21T10:10:07Z | INFO     | Transformed (kept): 2
 2025-10-21T10:10:07Z | INFO     | Skipped: 0
+```
 
 ```json
 {
@@ -201,6 +202,7 @@ python sync_transform_employees.py --results 2
 
 #### Example 2
 
+```text
 python sync_transform_employees.py --results 30 --filter-state "New York" --verbose
 2025-10-21T10:41:27Z | INFO     | Fetching HR data: https://randomuser.me/api/?results=30&nat=us (attempt 1/2)
 2025-10-21T10:41:27Z | DEBUG    | Starting new HTTPS connection (1): randomuser.me:443
@@ -260,6 +262,7 @@ python sync_transform_employees.py --results 30 --filter-state "New York" --verb
 2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:Missouri: 1
 2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:New Mexico: 1
 2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:North Dakota: 1
+```
 
 ```json
 {

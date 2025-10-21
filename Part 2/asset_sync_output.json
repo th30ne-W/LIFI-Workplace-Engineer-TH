@@ -1,0 +1,41 @@
+{
+  "sync_metadata": {
+    "sync_timestamp": "2025-10-21T10:41:27Z",
+    "source_system": "HR_API",
+    "record_count": 2
+  },
+  "employees": [
+    {
+      "asset_id": "ASSET-df3ef242-1761043287",
+      "employee_full_name": "Alvin Peters",
+      "employee_id": "df3ef242-bd14-4aa2-8a9a-b940968159d0",
+      "work_email": "alvin.peters@example.com",
+      "contact_number": "(564) 707-1697",
+      "office_location": {
+        "city": "Green Bay",
+        "state": "New York",
+        "country": "United States"
+      },
+      "employee_status": "active",
+      "hire_date": "2014-09-07",
+      "department": "unassigned",
+      "days_since_hire": 4062
+    },
+    {
+      "asset_id": "ASSET-9ae19ea1-1761043287",
+      "employee_full_name": "Javier Gilbert",
+      "employee_id": "9ae19ea1-ace9-4687-91e0-f10859a9e2a5",
+      "work_email": "javier.gilbert@example.com",
+      "contact_number": "(636) 835-4962",
+      "office_location": {
+        "city": "Topeka",
+        "state": "New York",
+        "country": "United States"
+      },
+      "employee_status": "active",
+      "hire_date": "2008-07-25",
+      "department": "unassigned",
+      "days_since_hire": 6297
+    }
+  ]
+}

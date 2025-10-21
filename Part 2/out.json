@@ -1,0 +1,169 @@
+{
+  "sync_metadata": {
+    "sync_timestamp": "2025-10-20T22:19:46.565222Z",
+    "source_system": "HR_API",
+    "record_count": 10
+  },
+  "employees": [
+    {
+      "asset_id": "ASSET-b6573503-1760998786",
+      "employee_full_name": "Norma Holland",
+      "employee_id": "b6573503-f60e-455d-92dc-d7e7cf3d4a4b",
+      "work_email": "norma.holland@example.com",
+      "contact_number": "(928) 463-7971",
+      "office_location": {
+        "city": "Anna",
+        "state": "Idaho",
+        "country": "United States"
+      },
+      "employee_status": "active",
+      "hire_date": "2011-03-15",
+      "department": "unassigned",
+      "days_since_hire": 5333
+    },
+    {
+      "asset_id": "ASSET-2b227d41-1760998786",
+      "employee_full_name": "Darren Wells",
+      "employee_id": "2b227d41-f165-4188-acdf-c863fd8f62c3",
+      "work_email": "darren.wells@example.com",
+      "contact_number": "(906) 421-1810",
+      "office_location": {
+        "city": "Huntington Beach",
+        "state": "Georgia",
+        "country": "United States"
+      },
+      "employee_status": "active",
+      "hire_date": "2002-07-23",
+      "department": "unassigned",
+      "days_since_hire": 8490
+    },
+    {
+      "asset_id": "ASSET-8d1bf227-1760998786",
+      "employee_full_name": "Darrell Medina",
+      "employee_id": "8d1bf227-bc0d-4e0b-9322-d107c9a6aec2",
+      "work_email": "darrell.medina@example.com",
+      "contact_number": "(578) 238-8737",
+      "office_location": {
+        "city": "Lewisville",
+        "state": "Maine",
+        "country": "United States"
+      },
+      "employee_status": "active",
+      "hire_date": "2018-06-20",
+      "department": "unassigned",
+      "days_since_hire": 2679
+    },
+    {
+      "asset_id": "ASSET-500980d7-1760998786",
+      "employee_full_name": "Stephanie Hale",
+      "employee_id": "500980d7-4139-4449-b5a1-5dd6c0407a8b",
+      "work_email": "stephanie.hale@example.com",
+      "contact_number": "(877) 912-4332",
+      "office_location": {
+        "city": "Boston",
+        "state": "South Carolina",
+        "country": "United States"
+      },
+      "employee_status": "active",
+      "hire_date": "2022-03-09",
+      "department": "unassigned",
+      "days_since_hire": 1321
+    },
+    {
+      "asset_id": "ASSET-7bc06ddb-1760998786",
+      "employee_full_name": "Austin Harrison",
+      "employee_id": "7bc06ddb-5ca1-4de9-aca1-5bd954685cdc",
+      "work_email": "austin.harrison@example.com",
+      "contact_number": "(650) 280-5531",
+      "office_location": {
+        "city": "Irving",
+        "state": "Arkansas",
+        "country": "United States"
+      },
+      "employee_status": "active",
+      "hire_date": "2007-02-12",
+      "department": "unassigned",
+      "days_since_hire": 6825
+    },
+    {
+      "asset_id": "ASSET-7c4b1c29-1760998786",
+      "employee_full_name": "Tomothy Jacobs",
+      "employee_id": "7c4b1c29-40fa-4411-8729-5fbdbbe24665",
+      "work_email": "tomothy.jacobs@example.com",
+      "contact_number": "(561) 794-8025",
+      "office_location": {
+        "city": "Montgomery",
+        "state": "Nevada",
+        "country": "United States"
+      },
+      "employee_status": "active",
+      "hire_date": "2010-03-20",
+      "department": "unassigned",
+      "days_since_hire": 5693
+    },
+    {
+      "asset_id": "ASSET-d36e3e13-1760998786",
+      "employee_full_name": "Joyce Moreno",
+      "employee_id": "d36e3e13-61f9-4f26-8646-415fbe71569d",
+      "work_email": "joyce.moreno@example.com",
+      "contact_number": "(257) 540-1781",
+      "office_location": {
+        "city": "Woodbridge",
+        "state": "Washington",
+        "country": "United States"
+      },
+      "employee_status": "active",
+      "hire_date": "2004-12-19",
+      "department": "unassigned",
+      "days_since_hire": 7610
+    },
+    {
+      "asset_id": "ASSET-f80e26e2-1760998786",
+      "employee_full_name": "Cassandra Hale",
+      "employee_id": "f80e26e2-3899-401e-8896-1935b407e332",
+      "work_email": "cassandra.hale@example.com",
+      "contact_number": "(575) 557-4945",
+      "office_location": {
+        "city": "Eureka",
+        "state": "Texas",
+        "country": "United States"
+      },
+      "employee_status": "active",
+      "hire_date": "2008-01-12",
+      "department": "unassigned",
+      "days_since_hire": 6491
+    },
+    {
+      "asset_id": "ASSET-b9088c44-1760998786",
+      "employee_full_name": "Morris Black",
+      "employee_id": "b9088c44-e764-4f98-b4ba-dd5a6815266a",
+      "work_email": "morris.black@example.com",
+      "contact_number": "(221) 415-0224",
+      "office_location": {
+        "city": "Naperville",
+        "state": "Massachusetts",
+        "country": "United States"
+      },
+      "employee_status": "active",
+      "hire_date": "2015-06-09",
+      "department": "unassigned",
+      "days_since_hire": 3786
+    },
+    {
+      "asset_id": "ASSET-2af7d038-1760998786",
+      "employee_full_name": "Christopher Holmes",
+      "employee_id": "2af7d038-4312-4a8f-a885-550dc9113d79",
+      "work_email": "christopher.holmes@example.com",
+      "contact_number": "(521) 353-1435",
+      "office_location": {
+        "city": "Eureka",
+        "state": "Connecticut",
+        "country": "United States"
+      },
+      "employee_status": "active",
+      "hire_date": "2003-12-18",
+      "department": "unassigned",
+      "days_since_hire": 7977
+    }
+  ]
+}

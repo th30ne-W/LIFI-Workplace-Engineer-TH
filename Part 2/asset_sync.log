@@ -1,0 +1,329 @@
+2025-10-20T21:54:50Z | INFO     | Fetching HR data: https://randomuser.me/api/?results=10&nat=us (attempt 1/2)
+2025-10-20T21:54:51Z | INFO     | Fetched 10 records from HR API.
+2025-10-20T21:54:51Z | INFO     | Wrote transformed output to: asset_sync_output.json
+2025-10-20T21:54:51Z | INFO     | ----- Summary -----
+2025-10-20T21:54:51Z | INFO     | Requested: 10
+2025-10-20T21:54:51Z | INFO     | Transformed (kept): 10
+2025-10-20T21:54:51Z | INFO     | Skipped: 0
+2025-10-20T22:12:49Z | INFO     | Fetching HR data: https://randomuser.me/api/?results=20&nat=us (attempt 1/2)
+2025-10-20T22:12:49Z | DEBUG    | Starting new HTTPS connection (1): randomuser.me:443
+2025-10-20T22:12:49Z | DEBUG    | https://randomuser.me:443 "GET /api/?results=20&nat=us HTTP/1.1" 200 None
+2025-10-20T22:12:49Z | INFO     | Fetched 20 records from HR API.
+2025-10-20T22:12:49Z | WARNING  | Skipping record 1: filtered_out_state:Indiana
+2025-10-20T22:12:49Z | WARNING  | Skipping record 2: filtered_out_state:California
+2025-10-20T22:12:49Z | WARNING  | Skipping record 3: filtered_out_state:Oregon
+2025-10-20T22:12:49Z | WARNING  | Skipping record 4: filtered_out_state:Massachusetts
+2025-10-20T22:12:49Z | WARNING  | Skipping record 5: filtered_out_state:Michigan
+2025-10-20T22:12:49Z | WARNING  | Skipping record 6: filtered_out_state:Florida
+2025-10-20T22:12:49Z | WARNING  | Skipping record 7: filtered_out_state:Minnesota
+2025-10-20T22:12:49Z | WARNING  | Skipping record 8: filtered_out_state:Nevada
+2025-10-20T22:12:49Z | WARNING  | Skipping record 9: filtered_out_state:Iowa
+2025-10-20T22:12:49Z | WARNING  | Skipping record 10: filtered_out_state:Wisconsin
+2025-10-20T22:12:49Z | WARNING  | Skipping record 11: filtered_out_state:South Carolina
+2025-10-20T22:12:49Z | WARNING  | Skipping record 12: filtered_out_state:New Jersey
+2025-10-20T22:12:49Z | WARNING  | Skipping record 13: filtered_out_state:Hawaii
+2025-10-20T22:12:49Z | WARNING  | Skipping record 14: filtered_out_state:Minnesota
+2025-10-20T22:12:49Z | WARNING  | Skipping record 15: filtered_out_state:Oklahoma
+2025-10-20T22:12:49Z | WARNING  | Skipping record 16: filtered_out_state:Maine
+2025-10-20T22:12:49Z | WARNING  | Skipping record 17: filtered_out_state:Massachusetts
+2025-10-20T22:12:49Z | WARNING  | Skipping record 18: filtered_out_state:Michigan
+2025-10-20T22:12:49Z | WARNING  | Skipping record 19: filtered_out_state:Washington
+2025-10-20T22:12:49Z | WARNING  | Skipping record 20: filtered_out_state:South Carolina
+2025-10-20T22:12:49Z | INFO     | Wrote transformed output to: asset_sync_output.json
+2025-10-20T22:12:49Z | INFO     | ----- Summary -----
+2025-10-20T22:12:49Z | INFO     | Requested: 20
+2025-10-20T22:12:49Z | INFO     | Transformed (kept): 0
+2025-10-20T22:12:49Z | INFO     | Skipped: 20
+2025-10-20T22:12:49Z | INFO     |   - filtered_out_state:Indiana: 1
+2025-10-20T22:12:49Z | INFO     |   - filtered_out_state:California: 1
+2025-10-20T22:12:49Z | INFO     |   - filtered_out_state:Oregon: 1
+2025-10-20T22:12:49Z | INFO     |   - filtered_out_state:Massachusetts: 2
+2025-10-20T22:12:49Z | INFO     |   - filtered_out_state:Michigan: 2
+2025-10-20T22:12:49Z | INFO     |   - filtered_out_state:Florida: 1
+2025-10-20T22:12:49Z | INFO     |   - filtered_out_state:Minnesota: 2
+2025-10-20T22:12:49Z | INFO     |   - filtered_out_state:Nevada: 1
+2025-10-20T22:12:49Z | INFO     |   - filtered_out_state:Iowa: 1
+2025-10-20T22:12:49Z | INFO     |   - filtered_out_state:Wisconsin: 1
+2025-10-20T22:12:49Z | INFO     |   - filtered_out_state:South Carolina: 2
+2025-10-20T22:12:49Z | INFO     |   - filtered_out_state:New Jersey: 1
+2025-10-20T22:12:49Z | INFO     |   - filtered_out_state:Hawaii: 1
+2025-10-20T22:12:49Z | INFO     |   - filtered_out_state:Oklahoma: 1
+2025-10-20T22:12:49Z | INFO     |   - filtered_out_state:Maine: 1
+2025-10-20T22:12:49Z | INFO     |   - filtered_out_state:Washington: 1
+2025-10-20T22:13:43Z | INFO     | Fetching HR data: https://randomuser.me/api/?results=30&nat=us (attempt 1/2)
+2025-10-20T22:13:43Z | DEBUG    | Starting new HTTPS connection (1): randomuser.me:443
+2025-10-20T22:13:43Z | DEBUG    | https://randomuser.me:443 "GET /api/?results=30&nat=us HTTP/1.1" 200 None
+2025-10-20T22:13:43Z | INFO     | Fetched 30 records from HR API.
+2025-10-20T22:13:43Z | WARNING  | Skipping record 1: filtered_out_state:Delaware
+2025-10-20T22:13:43Z | WARNING  | Skipping record 2: filtered_out_state:North Carolina
+2025-10-20T22:13:43Z | WARNING  | Skipping record 3: filtered_out_state:Rhode Island
+2025-10-20T22:13:43Z | WARNING  | Skipping record 4: filtered_out_state:Minnesota
+2025-10-20T22:13:43Z | WARNING  | Skipping record 5: filtered_out_state:New Jersey
+2025-10-20T22:13:43Z | WARNING  | Skipping record 6: filtered_out_state:Colorado
+2025-10-20T22:13:43Z | WARNING  | Skipping record 7: filtered_out_state:Vermont
+2025-10-20T22:13:43Z | WARNING  | Skipping record 8: filtered_out_state:Ohio
+2025-10-20T22:13:43Z | WARNING  | Skipping record 9: filtered_out_state:South Dakota
+2025-10-20T22:13:43Z | WARNING  | Skipping record 10: filtered_out_state:Vermont
+2025-10-20T22:13:43Z | WARNING  | Skipping record 11: filtered_out_state:Indiana
+2025-10-20T22:13:43Z | WARNING  | Skipping record 12: filtered_out_state:Maryland
+2025-10-20T22:13:43Z | WARNING  | Skipping record 13: filtered_out_state:Rhode Island
+2025-10-20T22:13:43Z | WARNING  | Skipping record 14: filtered_out_state:Alaska
+2025-10-20T22:13:43Z | WARNING  | Skipping record 15: filtered_out_state:California
+2025-10-20T22:13:43Z | WARNING  | Skipping record 16: filtered_out_state:Oklahoma
+2025-10-20T22:13:43Z | WARNING  | Skipping record 17: filtered_out_state:Tennessee
+2025-10-20T22:13:43Z | WARNING  | Skipping record 18: filtered_out_state:Connecticut
+2025-10-20T22:13:43Z | WARNING  | Skipping record 19: filtered_out_state:Maine
+2025-10-20T22:13:43Z | WARNING  | Skipping record 20: filtered_out_state:Mississippi
+2025-10-20T22:13:43Z | WARNING  | Skipping record 21: filtered_out_state:Tennessee
+2025-10-20T22:13:43Z | WARNING  | Skipping record 22: filtered_out_state:Hawaii
+2025-10-20T22:13:43Z | WARNING  | Skipping record 23: filtered_out_state:Idaho
+2025-10-20T22:13:43Z | WARNING  | Skipping record 24: filtered_out_state:New Hampshire
+2025-10-20T22:13:43Z | WARNING  | Skipping record 25: filtered_out_state:West Virginia
+2025-10-20T22:13:43Z | WARNING  | Skipping record 26: filtered_out_state:Alaska
+2025-10-20T22:13:43Z | WARNING  | Skipping record 27: filtered_out_state:Oklahoma
+2025-10-20T22:13:43Z | WARNING  | Skipping record 28: filtered_out_state:Minnesota
+2025-10-20T22:13:43Z | WARNING  | Skipping record 29: filtered_out_state:Alabama
+2025-10-20T22:13:43Z | WARNING  | Skipping record 30: filtered_out_state:Kentucky
+2025-10-20T22:13:43Z | INFO     | Wrote transformed output to: asset_sync_output.json
+2025-10-20T22:13:43Z | INFO     | ----- Summary -----
+2025-10-20T22:13:43Z | INFO     | Requested: 30
+2025-10-20T22:13:43Z | INFO     | Transformed (kept): 0
+2025-10-20T22:13:43Z | INFO     | Skipped: 30
+2025-10-20T22:13:43Z | INFO     |   - filtered_out_state:Delaware: 1
+2025-10-20T22:13:43Z | INFO     |   - filtered_out_state:North Carolina: 1
+2025-10-20T22:13:43Z | INFO     |   - filtered_out_state:Rhode Island: 2
+2025-10-20T22:13:43Z | INFO     |   - filtered_out_state:Minnesota: 2
+2025-10-20T22:13:43Z | INFO     |   - filtered_out_state:New Jersey: 1
+2025-10-20T22:13:43Z | INFO     |   - filtered_out_state:Colorado: 1
+2025-10-20T22:13:43Z | INFO     |   - filtered_out_state:Vermont: 2
+2025-10-20T22:13:43Z | INFO     |   - filtered_out_state:Ohio: 1
+2025-10-20T22:13:43Z | INFO     |   - filtered_out_state:South Dakota: 1
+2025-10-20T22:13:43Z | INFO     |   - filtered_out_state:Indiana: 1
+2025-10-20T22:13:43Z | INFO     |   - filtered_out_state:Maryland: 1
+2025-10-20T22:13:43Z | INFO     |   - filtered_out_state:Alaska: 2
+2025-10-20T22:13:43Z | INFO     |   - filtered_out_state:California: 1
+2025-10-20T22:13:43Z | INFO     |   - filtered_out_state:Oklahoma: 2
+2025-10-20T22:13:43Z | INFO     |   - filtered_out_state:Tennessee: 2
+2025-10-20T22:13:43Z | INFO     |   - filtered_out_state:Connecticut: 1
+2025-10-20T22:13:44Z | INFO     |   - filtered_out_state:Maine: 1
+2025-10-20T22:13:44Z | INFO     |   - filtered_out_state:Mississippi: 1
+2025-10-20T22:13:44Z | INFO     |   - filtered_out_state:Hawaii: 1
+2025-10-20T22:13:44Z | INFO     |   - filtered_out_state:Idaho: 1
+2025-10-20T22:13:44Z | INFO     |   - filtered_out_state:New Hampshire: 1
+2025-10-20T22:13:44Z | INFO     |   - filtered_out_state:West Virginia: 1
+2025-10-20T22:13:44Z | INFO     |   - filtered_out_state:Alabama: 1
+2025-10-20T22:13:44Z | INFO     |   - filtered_out_state:Kentucky: 1
+2025-10-20T22:13:57Z | INFO     | Fetching HR data: https://randomuser.me/api/?results=20&nat=us (attempt 1/2)
+2025-10-20T22:13:57Z | DEBUG    | Starting new HTTPS connection (1): randomuser.me:443
+2025-10-20T22:13:58Z | DEBUG    | https://randomuser.me:443 "GET /api/?results=20&nat=us HTTP/1.1" 200 None
+2025-10-20T22:13:58Z | INFO     | Fetched 20 records from HR API.
+2025-10-20T22:13:58Z | WARNING  | Skipping record 1: filtered_out_state:New Mexico
+2025-10-20T22:13:58Z | WARNING  | Skipping record 2: filtered_out_state:Washington
+2025-10-20T22:13:58Z | WARNING  | Skipping record 3: filtered_out_state:Alaska
+2025-10-20T22:13:58Z | WARNING  | Skipping record 4: filtered_out_state:Colorado
+2025-10-20T22:13:58Z | WARNING  | Skipping record 5: filtered_out_state:Missouri
+2025-10-20T22:13:58Z | WARNING  | Skipping record 6: filtered_out_state:Maine
+2025-10-20T22:13:58Z | WARNING  | Skipping record 7: filtered_out_state:Indiana
+2025-10-20T22:13:58Z | WARNING  | Skipping record 8: filtered_out_state:Colorado
+2025-10-20T22:13:58Z | WARNING  | Skipping record 9: filtered_out_state:Massachusetts
+2025-10-20T22:13:58Z | WARNING  | Skipping record 10: filtered_out_state:Georgia
+2025-10-20T22:13:58Z | WARNING  | Skipping record 11: filtered_out_state:West Virginia
+2025-10-20T22:13:58Z | WARNING  | Skipping record 12: filtered_out_state:Virginia
+2025-10-20T22:13:58Z | WARNING  | Skipping record 13: filtered_out_state:Connecticut
+2025-10-20T22:13:58Z | WARNING  | Skipping record 14: filtered_out_state:Nevada
+2025-10-20T22:13:58Z | WARNING  | Skipping record 15: filtered_out_state:Maryland
+2025-10-20T22:13:58Z | WARNING  | Skipping record 16: filtered_out_state:Kansas
+2025-10-20T22:13:58Z | WARNING  | Skipping record 17: filtered_out_state:Oregon
+2025-10-20T22:13:58Z | WARNING  | Skipping record 18: filtered_out_state:Oklahoma
+2025-10-20T22:13:58Z | WARNING  | Skipping record 19: filtered_out_state:Colorado
+2025-10-20T22:13:58Z | WARNING  | Skipping record 20: filtered_out_state:Arizona
+2025-10-20T22:13:58Z | INFO     | Wrote transformed output to: asset_sync_output.json
+2025-10-20T22:13:58Z | INFO     | ----- Summary -----
+2025-10-20T22:13:58Z | INFO     | Requested: 20
+2025-10-20T22:13:58Z | INFO     | Transformed (kept): 0
+2025-10-20T22:13:58Z | INFO     | Skipped: 20
+2025-10-20T22:13:58Z | INFO     |   - filtered_out_state:New Mexico: 1
+2025-10-20T22:13:58Z | INFO     |   - filtered_out_state:Washington: 1
+2025-10-20T22:13:58Z | INFO     |   - filtered_out_state:Alaska: 1
+2025-10-20T22:13:58Z | INFO     |   - filtered_out_state:Colorado: 3
+2025-10-20T22:13:58Z | INFO     |   - filtered_out_state:Missouri: 1
+2025-10-20T22:13:58Z | INFO     |   - filtered_out_state:Maine: 1
+2025-10-20T22:13:58Z | INFO     |   - filtered_out_state:Indiana: 1
+2025-10-20T22:13:58Z | INFO     |   - filtered_out_state:Massachusetts: 1
+2025-10-20T22:13:58Z | INFO     |   - filtered_out_state:Georgia: 1
+2025-10-20T22:13:58Z | INFO     |   - filtered_out_state:West Virginia: 1
+2025-10-20T22:13:58Z | INFO     |   - filtered_out_state:Virginia: 1
+2025-10-20T22:13:58Z | INFO     |   - filtered_out_state:Connecticut: 1
+2025-10-20T22:13:58Z | INFO     |   - filtered_out_state:Nevada: 1
+2025-10-20T22:13:58Z | INFO     |   - filtered_out_state:Maryland: 1
+2025-10-20T22:13:58Z | INFO     |   - filtered_out_state:Kansas: 1
+2025-10-20T22:13:58Z | INFO     |   - filtered_out_state:Oregon: 1
+2025-10-20T22:13:58Z | INFO     |   - filtered_out_state:Oklahoma: 1
+2025-10-20T22:13:58Z | INFO     |   - filtered_out_state:Arizona: 1
+2025-10-20T22:14:13Z | INFO     | Fetching HR data: https://randomuser.me/api/?results=30&nat=us (attempt 1/2)
+2025-10-20T22:14:13Z | DEBUG    | Starting new HTTPS connection (1): randomuser.me:443
+2025-10-20T22:14:14Z | DEBUG    | https://randomuser.me:443 "GET /api/?results=30&nat=us HTTP/1.1" 200 None
+2025-10-20T22:14:14Z | INFO     | Fetched 30 records from HR API.
+2025-10-20T22:14:14Z | WARNING  | Skipping record 1: filtered_out_state:California
+2025-10-20T22:14:14Z | WARNING  | Skipping record 2: filtered_out_state:Rhode Island
+2025-10-20T22:14:14Z | WARNING  | Skipping record 3: filtered_out_state:Mississippi
+2025-10-20T22:14:14Z | WARNING  | Skipping record 4: filtered_out_state:New York
+2025-10-20T22:14:14Z | WARNING  | Skipping record 5: filtered_out_state:Louisiana
+2025-10-20T22:14:14Z | WARNING  | Skipping record 6: filtered_out_state:Wisconsin
+2025-10-20T22:14:14Z | WARNING  | Skipping record 7: filtered_out_state:Florida
+2025-10-20T22:14:14Z | WARNING  | Skipping record 8: filtered_out_state:Florida
+2025-10-20T22:14:14Z | WARNING  | Skipping record 9: filtered_out_state:Nevada
+2025-10-20T22:14:14Z | WARNING  | Skipping record 10: filtered_out_state:Wisconsin
+2025-10-20T22:14:14Z | WARNING  | Skipping record 11: filtered_out_state:New Hampshire
+2025-10-20T22:14:14Z | WARNING  | Skipping record 12: filtered_out_state:Alaska
+2025-10-20T22:14:14Z | WARNING  | Skipping record 13: filtered_out_state:Vermont
+2025-10-20T22:14:14Z | WARNING  | Skipping record 14: filtered_out_state:New York
+2025-10-20T22:14:14Z | WARNING  | Skipping record 15: filtered_out_state:Alaska
+2025-10-20T22:14:14Z | WARNING  | Skipping record 16: filtered_out_state:South Carolina
+2025-10-20T22:14:14Z | WARNING  | Skipping record 17: filtered_out_state:Louisiana
+2025-10-20T22:14:14Z | WARNING  | Skipping record 18: filtered_out_state:Minnesota
+2025-10-20T22:14:14Z | WARNING  | Skipping record 19: filtered_out_state:New Mexico
+2025-10-20T22:14:14Z | WARNING  | Skipping record 20: filtered_out_state:Iowa
+2025-10-20T22:14:14Z | WARNING  | Skipping record 21: filtered_out_state:New Mexico
+2025-10-20T22:14:14Z | WARNING  | Skipping record 22: filtered_out_state:New Mexico
+2025-10-20T22:14:14Z | WARNING  | Skipping record 23: filtered_out_state:Georgia
+2025-10-20T22:14:14Z | WARNING  | Skipping record 24: filtered_out_state:Maine
+2025-10-20T22:14:14Z | WARNING  | Skipping record 26: filtered_out_state:Oklahoma
+2025-10-20T22:14:14Z | WARNING  | Skipping record 27: filtered_out_state:Georgia
+2025-10-20T22:14:14Z | WARNING  | Skipping record 28: filtered_out_state:Idaho
+2025-10-20T22:14:14Z | WARNING  | Skipping record 29: filtered_out_state:Oregon
+2025-10-20T22:14:14Z | WARNING  | Skipping record 30: filtered_out_state:Georgia
+2025-10-20T22:14:14Z | INFO     | Wrote transformed output to: asset_sync_output.json
+2025-10-20T22:14:14Z | INFO     | ----- Summary -----
+2025-10-20T22:14:14Z | INFO     | Requested: 30
+2025-10-20T22:14:14Z | INFO     | Transformed (kept): 1
+2025-10-20T22:14:14Z | INFO     | Skipped: 29
+2025-10-20T22:14:14Z | INFO     |   - filtered_out_state:California: 1
+2025-10-20T22:14:14Z | INFO     |   - filtered_out_state:Rhode Island: 1
+2025-10-20T22:14:14Z | INFO     |   - filtered_out_state:Mississippi: 1
+2025-10-20T22:14:14Z | INFO     |   - filtered_out_state:New York: 2
+2025-10-20T22:14:14Z | INFO     |   - filtered_out_state:Louisiana: 2
+2025-10-20T22:14:14Z | INFO     |   - filtered_out_state:Wisconsin: 2
+2025-10-20T22:14:14Z | INFO     |   - filtered_out_state:Florida: 2
+2025-10-20T22:14:14Z | INFO     |   - filtered_out_state:Nevada: 1
+2025-10-20T22:14:14Z | INFO     |   - filtered_out_state:New Hampshire: 1
+2025-10-20T22:14:14Z | INFO     |   - filtered_out_state:Alaska: 2
+2025-10-20T22:14:14Z | INFO     |   - filtered_out_state:Vermont: 1
+2025-10-20T22:14:14Z | INFO     |   - filtered_out_state:South Carolina: 1
+2025-10-20T22:14:14Z | INFO     |   - filtered_out_state:Minnesota: 1
+2025-10-20T22:14:14Z | INFO     |   - filtered_out_state:New Mexico: 3
+2025-10-20T22:14:14Z | INFO     |   - filtered_out_state:Iowa: 1
+2025-10-20T22:14:14Z | INFO     |   - filtered_out_state:Georgia: 3
+2025-10-20T22:14:14Z | INFO     |   - filtered_out_state:Maine: 1
+2025-10-20T22:14:14Z | INFO     |   - filtered_out_state:Oklahoma: 1
+2025-10-20T22:14:14Z | INFO     |   - filtered_out_state:Idaho: 1
+2025-10-20T22:14:14Z | INFO     |   - filtered_out_state:Oregon: 1
+2025-10-20T22:15:05Z | INFO     | Fetching HR data: https://randomuser.me/api/?results=10&nat=us (attempt 1/2)
+2025-10-20T22:15:05Z | INFO     | Fetched 10 records from HR API.
+2025-10-20T22:15:05Z | INFO     | Comparison vs previous: added=10, removed=1, unchanged=0
+2025-10-20T22:15:05Z | INFO     | Wrote transformed output to: asset_sync_output.json
+2025-10-20T22:15:05Z | INFO     | ----- Summary -----
+2025-10-20T22:15:05Z | INFO     | Requested: 10
+2025-10-20T22:15:05Z | INFO     | Transformed (kept): 10
+2025-10-20T22:15:05Z | INFO     | Skipped: 0
+2025-10-20T22:18:10Z | INFO     | Fetching HR data: https://randomuser.me/api/?results=10&nat=us (attempt 1/2)
+2025-10-20T22:18:10Z | INFO     | Fetched 10 records from HR API.
+2025-10-20T22:18:10Z | INFO     | Comparison vs previous: added=10, removed=10, unchanged=0
+2025-10-20T22:18:10Z | INFO     | Wrote transformed output to: asset_sync_output.json
+2025-10-20T22:18:10Z | INFO     | ----- Summary -----
+2025-10-20T22:18:10Z | INFO     | Requested: 10
+2025-10-20T22:18:10Z | INFO     | Transformed (kept): 10
+2025-10-20T22:18:10Z | INFO     | Skipped: 0
+2025-10-21T09:48:05Z | INFO     | Fetching HR data: https://randomuser.me/api/?results=3&nat=us (attempt 1/2)
+2025-10-21T09:48:05Z | INFO     | Fetched 3 records from HR API.
+2025-10-21T09:48:05Z | INFO     | Wrote transformed output to: asset_sync_output.json
+2025-10-21T09:48:05Z | INFO     | ----- Summary -----
+2025-10-21T09:48:05Z | INFO     | Requested: 3
+2025-10-21T09:48:05Z | INFO     | Transformed (kept): 3
+2025-10-21T09:48:05Z | INFO     | Skipped: 0
+2025-10-21T09:54:44Z | INFO     | Fetching HR data: https://randomuser.me/api/?results=20&nat=us (attempt 1/2)
+2025-10-21T09:54:44Z | INFO     | Fetched 20 records from HR API.
+2025-10-21T09:54:44Z | INFO     | Wrote transformed output to: asset_sync_output.json
+2025-10-21T09:54:44Z | INFO     | ----- Summary -----
+2025-10-21T09:54:44Z | INFO     | Requested: 20
+2025-10-21T09:54:44Z | INFO     | Transformed (kept): 20
+2025-10-21T09:54:44Z | INFO     | Skipped: 0
+2025-10-21T10:10:06Z | INFO     | Fetching HR data: https://randomuser.me/api/?results=2&nat=us (attempt 1/2)
+2025-10-21T10:10:07Z | INFO     | Fetched 2 records from HR API.
+2025-10-21T10:10:07Z | INFO     | Wrote transformed output to: asset_sync_output.json
+2025-10-21T10:10:07Z | INFO     | ----- Summary -----
+2025-10-21T10:10:07Z | INFO     | Requested: 2
+2025-10-21T10:10:07Z | INFO     | Transformed (kept): 2
+2025-10-21T10:10:07Z | INFO     | Skipped: 0
+2025-10-21T10:26:32Z | INFO     | Fetching HR data: https://randomuser.me/api/?results=10&nat=us (attempt 1/2)
+2025-10-21T10:26:32Z | INFO     | Fetched 10 records from HR API.
+2025-10-21T10:26:32Z | INFO     | Wrote transformed output to: asset_sync_output.json
+2025-10-21T10:26:32Z | INFO     | ----- Summary -----
+2025-10-21T10:26:32Z | INFO     | Requested: 10
+2025-10-21T10:26:32Z | INFO     | Transformed (kept): 10
+2025-10-21T10:26:32Z | INFO     | Skipped: 0
+2025-10-21T10:27:33Z | INFO     | Fetching HR data: https://randomuser.me/api/?results=10&nat=us (attempt 1/2)
+2025-10-21T10:27:34Z | INFO     | Fetched 10 records from HR API.
+2025-10-21T10:27:34Z | INFO     | Wrote transformed output to: asset_sync_output.json
+2025-10-21T10:27:34Z | INFO     | ----- Summary -----
+2025-10-21T10:27:34Z | INFO     | Requested: 10
+2025-10-21T10:27:34Z | INFO     | Transformed (kept): 10
+2025-10-21T10:27:34Z | INFO     | Skipped: 0
+2025-10-21T10:41:27Z | INFO     | Fetching HR data: https://randomuser.me/api/?results=30&nat=us (attempt 1/2)
+2025-10-21T10:41:27Z | DEBUG    | Starting new HTTPS connection (1): randomuser.me:443
+2025-10-21T10:41:27Z | DEBUG    | https://randomuser.me:443 "GET /api/?results=30&nat=us HTTP/1.1" 200 None
+2025-10-21T10:41:27Z | INFO     | Fetched 30 records from HR API.
+2025-10-21T10:41:27Z | WARNING  | Skipping record 1: filtered_out_state:California
+2025-10-21T10:41:27Z | WARNING  | Skipping record 2: filtered_out_state:Iowa
+2025-10-21T10:41:27Z | WARNING  | Skipping record 3: filtered_out_state:Maine
+2025-10-21T10:41:27Z | WARNING  | Skipping record 4: filtered_out_state:Washington
+2025-10-21T10:41:27Z | WARNING  | Skipping record 5: filtered_out_state:South Carolina
+2025-10-21T10:41:27Z | WARNING  | Skipping record 6: filtered_out_state:New Jersey
+2025-10-21T10:41:27Z | WARNING  | Skipping record 7: filtered_out_state:New Jersey
+2025-10-21T10:41:27Z | WARNING  | Skipping record 8: filtered_out_state:New Jersey
+2025-10-21T10:41:27Z | WARNING  | Skipping record 10: filtered_out_state:Louisiana
+2025-10-21T10:41:27Z | WARNING  | Skipping record 11: filtered_out_state:Kansas
+2025-10-21T10:41:27Z | WARNING  | Skipping record 12: filtered_out_state:Mississippi
+2025-10-21T10:41:27Z | WARNING  | Skipping record 13: filtered_out_state:Connecticut
+2025-10-21T10:41:27Z | WARNING  | Skipping record 14: filtered_out_state:South Dakota
+2025-10-21T10:41:27Z | WARNING  | Skipping record 15: filtered_out_state:Kansas
+2025-10-21T10:41:27Z | WARNING  | Skipping record 16: filtered_out_state:Kentucky
+2025-10-21T10:41:27Z | WARNING  | Skipping record 17: filtered_out_state:Massachusetts
+2025-10-21T10:41:27Z | WARNING  | Skipping record 18: filtered_out_state:Florida
+2025-10-21T10:41:27Z | WARNING  | Skipping record 19: filtered_out_state:Kansas
+2025-10-21T10:41:27Z | WARNING  | Skipping record 20: filtered_out_state:Ohio
+2025-10-21T10:41:27Z | WARNING  | Skipping record 21: filtered_out_state:Kansas
+2025-10-21T10:41:27Z | WARNING  | Skipping record 22: filtered_out_state:Nevada
+2025-10-21T10:41:27Z | WARNING  | Skipping record 23: filtered_out_state:Delaware
+2025-10-21T10:41:27Z | WARNING  | Skipping record 24: filtered_out_state:Hawaii
+2025-10-21T10:41:27Z | WARNING  | Skipping record 25: filtered_out_state:Missouri
+2025-10-21T10:41:27Z | WARNING  | Skipping record 26: filtered_out_state:New Mexico
+2025-10-21T10:41:27Z | WARNING  | Skipping record 27: filtered_out_state:Kentucky
+2025-10-21T10:41:27Z | WARNING  | Skipping record 28: filtered_out_state:North Dakota
+2025-10-21T10:41:27Z | WARNING  | Skipping record 30: filtered_out_state:Mississippi
+2025-10-21T10:41:27Z | INFO     | Wrote transformed output to: asset_sync_output.json
+2025-10-21T10:41:27Z | INFO     | ----- Summary -----
+2025-10-21T10:41:27Z | INFO     | Requested: 30
+2025-10-21T10:41:27Z | INFO     | Transformed (kept): 2
+2025-10-21T10:41:27Z | INFO     | Skipped: 28
+2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:California: 1
+2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:Iowa: 1
+2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:Maine: 1
+2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:Washington: 1
+2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:South Carolina: 1
+2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:New Jersey: 3
+2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:Louisiana: 1
+2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:Kansas: 4
+2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:Mississippi: 2
+2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:Connecticut: 1
+2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:South Dakota: 1
+2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:Kentucky: 2
+2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:Massachusetts: 1
+2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:Florida: 1
+2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:Ohio: 1
+2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:Nevada: 1
+2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:Delaware: 1
+2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:Hawaii: 1
+2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:Missouri: 1
+2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:New Mexico: 1
+2025-10-21T10:41:27Z | INFO     |   - filtered_out_state:North Dakota: 1
